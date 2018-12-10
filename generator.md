@@ -1,21 +1,39 @@
-# generator解决了什么问题，
+如何生成generator？yield方法和generator expression
+generator的执行过程
+
+> 参考https://www.jb51.net/article/113160.htm
+代码执行过程如下：
+当调用gen.next(或者send(None))方法时，会激活生成器，直至遇到生成器方法的yield语句。同时，生成器方法的执行被挂起。
+当调用close方法时，恢复生成器方法的执行过程。系统在yield语句处抛出GeneratorExit异常，执行过程跳到except语句块。当except语句块处理完毕后，系统会继续往下执行，直至生成器方法执行结束。
+在实例化生成器后如果直接调用send()方法启动函数，应该使用send(None)方法，因为此时没有yield表达式可以接收其返回的值。
+
+generator的特点
+generator与普通的function的区别
+generator基础应用
+generator高级应用
+【参考】
+http://www.cnblogs.com/xybaby/p/6322376.html
+https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432090954004980bd351f2cd4cc18c9e6c06d855c498000
+https://www.jb51.net/article/113160.htm 是对廖雪峰文章的解读
+
+# generator解决了什么问题
 # 什么是generator
 # 如何定一个genrator的两种方法
 # generator的高级方法
 # generator的适用场景
 
 # 1、generator解决了什么问题
-# 通过列表生成式，我们可以直接创建一个列表。但是这里有个问题，受内存限制，列表容量肯定是有限的。
-# 比如创建一个100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。
-# 我们得想一个办法解决这个问题。
-# 试想一下，如果列表元素可以按照某种算法推算出来，我们可以在循环使用元素的过程中不断推算出后续的元素，这样就不必创建完整的list，从而节省大量的空间。
+通过列表生成式，我们可以直接创建一个列表。但是这里有个问题，受内存限制，列表容量肯定是有限的。
+比如创建一个100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。
+我们得想一个办法解决这个问题。
+试想一下，如果列表元素可以按照某种算法推算出来，我们可以在循环使用元素的过程中不断推算出后续的元素，这样就不必创建完整的list，从而节省大量的空间。
 
 # 2、什么是generator
-# 在Python中，一边循环一边计算的机制，称为Generator。generator具有可迭代属性。我们可以通过循环来使用它。
+在Python中，一边循环一边计算的机制，称为Generator。generator具有可迭代属性。我们可以通过循环来使用它。
 
 # 3、简单生成器
-
-# 要创建一个generator，有很多种方法。第一种方法很简单，只要把一个列表生成式的[]改成()，就创建了一个generator：
+要创建一个generator，有很多种方法。第一种方法很简单，只要把一个列表生成式的[]改成()，就创建了一个generator：
+```
 import re
 from collections import Iterable
 
@@ -30,16 +48,17 @@ g = (x * 2 for x in range(4))
 print("g 是什么对象？", g)
 print("g 包含有__iter__属性吗，如果包含则说明其可以迭代。\n", dir(g))
 print("g 是可迭代的吗？\n", isinstance(g, Iterable))
-
+```
 # 4、如何获取generator的值
-# 如果要一个一个打印出来，可以通过generator的next()方法：
-# print(g.__next__())
-# print(g.__next__())
-# print(g.__next__())
-# print(g.__next__())
-# print(g.__next__())
-# generator保存的是算法，每次调用__next__()，就计算出下一个元素的值，直到计算到最后一个元素，没有更多的元素时，抛出StopIteration的异常。
-# 这种不断调用next()方法实在是太变态了，实际很少用。因为generator是可以迭代的，所以我们可以使用for循环来读取元素。
+如果要一个一个打印出来，可以通过generator的next()方法：
+print(g.__next__())
+print(g.__next__())
+print(g.__next__())
+print(g.__next__())
+print(g.__next__())
+
+generator保存的是算法，每次调用__next__()，就计算出下一个元素的值，直到计算到最后一个元素，没有更多的元素时，抛出StopIteration的异常。
+这种不断调用next()方法实在是太变态了，实际很少用。因为generator是可以迭代的，所以我们可以使用for循环来读取元素。
 print("使用for来读取generator数据，先把上面的__next__()语句注释掉")
 
 
