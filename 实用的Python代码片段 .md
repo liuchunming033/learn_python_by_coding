@@ -1,6 +1,49 @@
 # 1 Python介绍和安装
-## 1-1 Python介绍和安装
-1-1 Python介绍和安装,安装pycharm社区版，写第一个程序
+## 1-1 Python介绍
+Python的官网是：https://www.python.org 
+
+Python高级解释型语言。语法简单，入门容易，想精通要花功夫。
+
+## 1-2 Python应用场景
+Python能干啥？web开发、爬虫、数据分析、软件测试、深度学习、人工智能等领域。
+
+## 1-3 Python安装
+可以通过pyenv安装python版本，安装pyenv的方法参考 https://github.com/pyenv/pyenv#basic-github-checkout
+
+安装配置完成后执行以下source ~/.bash_profile, 就可以执行pyenv命令来安装Python版本了。
+
+比如安装python 3.6.7，执行下面的命令就可以了
+```bash
+pyenv install 3.6.7
+```
+安装完成后，查看一下是否安装成功了
+```bash
+pyenv versions
+```
+如果输出如下，则表示安装成功了
+```bash
+* system (set by /Users/mac/.pyenv/version)
+  3.6.7
+```
+如果想要3.6.7版本生效，可以执行
+```bash
+pyenv global 3.6.7
+```
+如果输出的3.6.7前面有*号，则表示设置成功了
+```bash
+  system
+* 3.6.7 (set by /Users/mac/.pyenv/version)
+```
+## 1-4 Python开发环境安装
+安装pycharm社区版 http://www.jetbrains.com/pycharm/download 选择Community版下载就可以。按照提示安装。配置。
+
+## 1-5 写第一个程序
+1、打开Pycharm——>Create New Project——>给项目起名字——>选择python解释器版本(可以在~/.pyenv/shims/中找到刚才安装的python3.6版本)——>点击"Create"。
+2、进入项目中，在项目文件夹上点击右键，选择New——>Python File——>输入文件名hello——>OK。
+3、在新建的hello.py中输入下面的代码
+```python
+print("Hello world!")
+```
 
 # 2 Python基础知识
 
