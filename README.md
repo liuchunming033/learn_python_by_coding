@@ -84,6 +84,7 @@ x = y.lower() if isinstance(y, str) else y
 ### 4-5-3 偏函数
 
 ### 4-5-4 装饰器
+http://lib.csdn.net/article/python/62942
 
 # 5 Python高级特性及编程规范
 ## 5-1 列表生成式
@@ -121,8 +122,6 @@ print [s.lower() if isinstance(s , str) else s for s in L ]
 ## 5-2 生成器generator
 
 ## 5-3 迭代器
-
-
 
 资料简介： 5-4 装饰器
 资料下载：点击下载
