@@ -40,11 +40,20 @@ pyenv global 3.6.7
 ## 1-5 写第一个程序
 1、打开Pycharm——>Create New Project——>给项目起名字——>选择python解释器版本(可以在~/.pyenv/shims/中找到刚才安装的python3.6版本)——>点击"Create"。
 
-2、进入项目中，在项目文件夹上点击右键，选择New——>Python File——>输入文件名hello——>OK。
+2、进入项目中，在项目文件夹上点击右键，选择New——>Python File——>输入文件名hello——>点击"OK"。
 
 3、在新建的hello.py中输入下面的代码
 ```python
 print("Hello world!")
+```
+
+4、在代码编辑区点击右键，选择"Run hello"，执行hello.py。可以在Pycharm的底部看到输出结果"Hello world!"
+```bash
+/Users/mac/.pyenv/shims/python3.6 /Users/mac/Documents/GitHub/learn_python_by_coding/hello.py
+Hello world!
+
+Process finished with exit code 0
+
 ```
 
 # 2 Python基础知识
