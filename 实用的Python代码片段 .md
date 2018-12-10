@@ -1,6 +1,3 @@
-# learn_python_by_coding
-
-
 # 1 Python介绍和安装
 ## 1-1 Python介绍和安装
 1-1 Python介绍和安装,安装pycharm社区版，写第一个程序
@@ -167,7 +164,7 @@ isinstance(iter([]), Iterator)
 list=[1,2,3,4]
 it = iter(list)    # 创建迭代器对象
 for x in it:
-print(x, end=" ")
+    print(x, end=" ")
 ```
 也可以使用__next__()函数
 ```
@@ -176,10 +173,10 @@ import sys         # 引入 sys 模块
 list=[1,2,3,4]
 it = iter(list)    # 创建迭代器对象
 while True:
-try:
-print(it.__next__())
-except StopIteration:
-sys.exit()
+    try:
+        print(it.__next__())
+    except StopIteration:
+        sys.exit()
 ```
 
 ### 3、迭代器的作用 
@@ -188,7 +185,7 @@ sys.exit()
 其实意思就是，不管你用的是链表，2叉树、3叉树、N叉树，还是向量。 迭代器都可以让你从first开始，使用next，到达last，而且一个不漏滴都走一遍。
 你不必知道在next的时候，迭代器是怎样从当前节点跳到下一个节点的。
 就和猴子一样，你不必知道猴子是怎样从这个树的节点跳到那个树的！总之，猴子可以把树的所有节点跳一边（再次强调：一个不漏）
-
+ 
 迭代器是：
 无论你用的是什么结构（链表也好、数组也好、数也好、图也好、hash表也好），总之， 你可以不关心任何细节遍历细节，（下面看好了） 从一个起点(begin)触发到达，到达终点(end)，并且保证每个节点都能走到且只走一次。
 
@@ -232,39 +229,39 @@ b.__next__()
 下面我写一个与list_iterator相同行为的迭代器：
 ```
 class ListIter(object):
-def __init__(self, data):
-self.__data = data
-self.__count = 0
-
-def __iter__(self):
-return self
-
-def __next__(self):
-if self.__count < len(self.__data):
-val = self.__data[self.__count]
-self.__count += 1
-return val
-else:
-raise StopIteration
+    def __init__(self, data):
+        self.__data = data
+        self.__count = 0
+ 
+    def __iter__(self):
+        return self
+ 
+    def __next__(self):
+        if self.__count < len(self.__data):
+            val = self.__data[self.__count]
+            self.__count += 1
+            return val
+        else:
+            raise StopIteration
 ```
 我们就可以使用for循环来遍历这个迭代器了：
 ```
 a = ListIter([1,2,3,4,5])
 for i in a:
-print(i)
+    print(i)
 ```
 对于迭代器对象，使用for循环遍历整个数组其实是个语法糖，他的内部实现还是通过调用对象的__next__()方法。
 实际上他内部的工作原理应该是这样的：
 ```
 a = ListIter([1, 2, 3, 4, 5])
-
+ 
 while True:
-try:
-i = a.__next__()
-except StopIteration:
-break
-// do something in for loop
-print(i)
+    try:
+        i = a.__next__()
+    except StopIteration:
+        break
+    // do something in for loop
+    print(i)
 ```
 ### 7、迭代器支持多次迭代
 参考 http://python.jobbole.com/85240/
@@ -386,18 +383,18 @@ print(i)
 ## 12-1 并发和并行
 并行, parallel
 
-互不干扰的在同一时刻做多件事;
+    互不干扰的在同一时刻做多件事;
 
-如,同一时刻,同时有多辆车在多条车道上跑,即同时发生的概念.
+    如,同一时刻,同时有多辆车在多条车道上跑,即同时发生的概念.
 
-
+ 
 
 并发, concurrency
 
-同时做某些事,但是强调同一时段做多件事.
+    同时做某些事,但是强调同一时段做多件事.
 
-如,同一路口,发生了车辆要同时通过路面的事件.
-
+    如,同一路口,发生了车辆要同时通过路面的事件.
+    
 参考https://www.cnblogs.com/amesy/p/8067583.html 引出多线程多进程的方案。
 ## 12-2 多进程
 简单

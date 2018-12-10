@@ -1,0 +1,97 @@
+
+推导式comprehensions（又称解析式），是Python的一种独有特性。推导式是可以从一个数据序列构建另一个新的数据序列的结构体。 共有三种推导，在Python2和3中都有支持：
+
+- 列表(list)推导式
+- 字典(dict)推导式
+- 集合(set)推导式
+
+## List Comprehensions
+
+是Python内置的非常简单却强大的可以用来创建list的生成式。写法简单明了。
+
+基本语法格式：
+
+[exp for iter_var in iterable]
+
+举几个实际的例子
+
+1、平方组成的列表
+[x * x for x in range(1, 11)]
+
+2、os.listdir可以列出文件和目录
+
+[d for d in os.listdir('.')]
+
+3、for循环后面还可以加上if判断
+
+[x * x for x in range(1, 11) if x % 2 == 0] 
+
+再举个例子，过滤掉长度小于3的字符串列表，并将剩下的转换成大写字母
+
+names = ['Bob','Tom','alice','Jerry','Wendy','Smith']    
+
+[name.upper() for name in names if len(name)>3]  
+
+4、字典格式转换
+
+[k + '=' + v for k, v in d.items()] 
+
+5、把list中得大写字符转为小写，推到出另外一个list":
+L = ['Java' , 'C' , 'Swift' , 'Python' , 123] print [s.lower() if isinstance(s , str) else s for s in L ]
+> 1、使用内建的isinstance函数可以判断一个变量是不是字符串
+2、s.lower() 可以将一个大写字母转为小写。3、增加if语句保证列表生成式正确执行。
+
+6、可以使用两层循环，生成全排列
+
+[m + n for m in 'ABCD' for n in 'XYZ']
+
+7、求(x,y)其中x是0-5之间的偶数，y是0-5之间的奇数组成的元祖列表
+
+[(x,y) for x in range(5) if x%2==0 for y in range(5) if y %2==1]  
+
+## Dict Comprehensions
+字典推导和列表推导的使用方法是类似的，只不中括号该改成大括号。直接举例说明：
+
+1、快速更换key和value
+
+mcase = {'a': 10, 'b': 34}
+
+mcase_frequency = {v: k for k, v in mcase.items()}
+
+print mcase_frequency # Output: {10: 'a', 34: 'b'}
+
+2、大小写key合并
+
+mcase = {'a': 10, 'b': 34, 'A': 7, 'Z': 3}
+mcase_frequency = {
+    k.lower(): mcase.get(k.lower(), 0) + mcase.get(k.upper(), 0)
+    for k in mcase.keys()
+}
+print mcase_frequency
+
+3、用字典推导式以字符串以及其长度建字典
+strings = ['import','is','with','if','file','exception']  
+D = {key: val for val, key in enumerate(strings)}
+
+
+## Set Comprehensions
+它们跟列表推导式也是类似的。唯一的区别在于它使用大括号{}。
+
+1、一个列表中有很多元素，我们做到快速去重
+
+heavy = {x for x in [2, 3, 5, 3, 5, 2, 6]} 
+
+print(heavy)
+
+2、一个由男人列表和女人列表组成的嵌套列表,取出姓名中带有两个以上字母e的姓名，组成列表
+
+names = [['Tom','Billy','Jefferson','Andrew','Wesley','Steven','Joe']，['Alice','Jill','Ana','Wendy','Jennifer','Sherry','Eva']]  
+
+ [name for lst in names for name in lst if name.count('e')>=2]  #注意遍历顺序，这是实现的关键  
+ 
+## 思考题：
+例1:  过滤掉长度小于3的字符串列表，并将剩下的转换成大写字母
+
+例2:  求(x,y)其中x是0-5之间的偶数，y是0-5之间的奇数组成的元祖列表
+
+例3:  求M中3,6,9组成的列表M = [[1,2,3],[4,5,6],[7,8,9]]
