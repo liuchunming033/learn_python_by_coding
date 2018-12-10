@@ -10,7 +10,7 @@ Python能干啥？web开发、爬虫、数据分析、软件测试、深度学�
 ## 1-3 Python安装
 可以通过pyenv安装python版本，安装pyenv的方法参考 https://github.com/pyenv/pyenv#basic-github-checkout
 
-安装配置完成后执行以下source ~/.bash_profile, 就可以执行pyenv命令来安装Python版本了。
+安装配置完成后执行下`source ~/.bash_profile`, 就可以执行pyenv命令来安装Python版本了。
 
 比如安装python 3.6.7，执行下面的命令就可以了
 ```bash
