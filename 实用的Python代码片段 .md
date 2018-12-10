@@ -55,6 +55,7 @@ Hello world!
 Process finished with exit code 0
 
 ```
+这样，我们就完成了我们的第一段Python程序。
 
 # 2 Python基础知识
 
