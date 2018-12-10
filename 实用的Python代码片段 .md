@@ -39,7 +39,9 @@ pyenv global 3.6.7
 
 ## 1-5 写第一个程序
 1、打开Pycharm——>Create New Project——>给项目起名字——>选择python解释器版本(可以在~/.pyenv/shims/中找到刚才安装的python3.6版本)——>点击"Create"。
+
 2、进入项目中，在项目文件夹上点击右键，选择New——>Python File——>输入文件名hello——>OK。
+
 3、在新建的hello.py中输入下面的代码
 ```python
 print("Hello world!")
