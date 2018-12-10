@@ -79,7 +79,7 @@ x = y.lower() if isinstance(y, str) else y
 ## 4-5 函数式编程：
 ### 4-5-1 高阶函数map/reduce/filter/sorted/
 
-### 4-5-2 函数作为返回值
+### 4-5-2 函数作为返回值（闭包）
 
 ### 4-5-3 偏函数
 
