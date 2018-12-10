@@ -1,0 +1,56 @@
+# 23 Python Web开发
+
+## 23-1 HTTP协议简介
+
+## 23-2 HTML简介
+
+## 23-3 写一个web服务
+一个完整，接受HTTP请求、解析HTTP请求、处理HTTP请求，发送HTTP响应。其中接受HTTP请求、解析HTTP请求、发送HTTP响应，对于任何请求的流程都是一样的，处理也是一样的，如果web开发者每个web项目都要实现这三个步骤，太不方便了。
+正确的做法是底层代码由专门的服务器软件实现，我们用Python专注于生成HTML文档。因为我们不希望接触到TCP连接、HTTP原始请求和响应格式，所以，需要一个统一的接口，让我们专心用Python编写Web业务。
+
+这个接口就是WSGI：Web Server Gateway Interface。
+
+WSGI协议
+
+## 23-4 Web部署
+http请求流程这里有一张图：https://img-blog.csdn.net/20180306142935273?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWprMTM3MDM2MjM3NTc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70
+这里面涉及到一些概念：uWSGI，uwsgi，Nginx
+
+WSGI
+
+WSGI的全称是Web Server Gateway Interface（Web服务器网关接口），它不是服务器、python模块、框架、API或者任何软件，只是一种描述web服务器（如nginx，uWSGI等服务器）如何与web应用程序（如用Django、Flask框架写的程序）通信的规范。
+
+server和application的规范在PEP3333中有具体描述，要实现WSGI协议，必须同时实现web server和web application，当前运行在WSGI协议之上的web框架有Bottle, Flask, Django。
+
+uWSGI
+
+uWSGI是一个全功能的HTTP服务器，实现了WSGI协议、uwsgi协议、http协议等。它要做的就是把HTTP协议转化成语言支持的网络协议。比如把HTTP协议转化成WSGI协议，让Python可以直接使用。
+
+uwsgi
+
+与WSGI一样，是uWSGI服务器的独占通信协议，用于定义传输信息的类型(type of information)。每一个uwsgi packet前4byte为传输信息类型的描述，与WSGI协议是两种东西，据说该协议是fcgi协议的10倍快。
+
+Nginx
+
+Nginx是一个Web服务器其中的HTTP服务器功能和uWSGI功能很类似，但是Nginx还可以用作更多用途，比如最常用的反向代理功能。
+
+Django
+
+Django是一个Web框架，框架的作用在于处理request和 reponse，其他的不是框架所关心的内容。所以如何部署Django不是Django所需要关心的。
+
+参考（https://blog.csdn.net/yjk13703623757/article/details/79457913）
+里面浏览器访问python程序的流程图。
+
+Browser-->Nginx（web服务器）-->uWSGI（WSGI服务器）-->Application（WSGI应用）
+
+Nginx接受来自客户端的Http请求发送给uWSGI，uWSGI处理请求并将关键信息传递给web应用(django，flask等)，应用返回Response经由uWSGI发送给Nginx，Nginx再发送给客户端。 
+## 23-5 编写一个符合WSGI接口规范的应用并运行起来（借助wsgiref）
+参考1：
+https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432012393132788f71e0edad4676a3f76ac7776f3a16000
+
+参考2：
+https://blog.csdn.net/a519640026/article/details/76157976
+## 23-6 自己实现一个WSGI Server
+参考
+https://blog.csdn.net/a519640026/article/details/76157976
+http://fanchunke.me/Python/wsgiref%E5%8C%85%E2%80%94%E2%80%94%E7%AC%A6%E5%90%88WSGI%E6%A0%87%E5%87%86%E7%9A%84Web%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%EF%BC%88%E4%B8%80%EF%BC%89/
