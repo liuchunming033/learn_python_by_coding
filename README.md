@@ -117,23 +117,6 @@ print [s.lower() if isinstance(s , str) else s for s in L ]
 资料下载：[点击下载](http://note.youdao.com/noteshare?id=fb1e36d1cc8a1aeb700867c60d0d6110)
 
 ## 5-2 生成器generator
-如何生成generator？yield方法和generator expression
-generator的执行过程
-
-> 参考https://www.jb51.net/article/113160.htm
-代码执行过程如下：
-当调用gen.next(或者send(None))方法时，会激活生成器，直至遇到生成器方法的yield语句。同时，生成器方法的执行被挂起。
-当调用close方法时，恢复生成器方法的执行过程。系统在yield语句处抛出GeneratorExit异常，执行过程跳到except语句块。当except语句块处理完毕后，系统会继续往下执行，直至生成器方法执行结束。
-在实例化生成器后如果直接调用send()方法启动函数，应该使用send(None)方法，因为此时没有yield表达式可以接收其返回的值。
-
-generator的特点
-generator与普通的function的区别
-generator基础应用
-generator高级应用
-【参考】
-http://www.cnblogs.com/xybaby/p/6322376.html
-https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432090954004980bd351f2cd4cc18c9e6c06d855c498000
-https://www.jb51.net/article/113160.htm 是对廖雪峰文章的解读
 
 ## 5-3 迭代器
 
