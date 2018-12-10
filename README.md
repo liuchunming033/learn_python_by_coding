@@ -76,12 +76,14 @@ x = y.lower() if isinstance(y, str) else y
 资料下载：点击下载
 ## 4-4 匿名函数
 
-资料简介： 4-4 匿名函数
-资料下载：点击下载
-## 4-5 函数式编程：map/reduce/filter/sorted/偏函数
+## 4-5 函数式编程：
+### 4-5-1 高阶函数map/reduce/filter/sorted/
 
-资料简介： 4-5 函数式编程：map/reduce/filter/sorted/偏函数
-资料下载：点击下载
+### 4-5-2 函数作为返回值
+
+### 4-5-3 偏函数
+
+### 4-5-4 装饰器
 
 # 5 Python高级特性及编程规范
 ## 5-1 列表生成式
@@ -120,7 +122,7 @@ print [s.lower() if isinstance(s , str) else s for s in L ]
 
 ## 5-3 迭代器
 
-## 5-4 装饰器
+
 
 资料简介： 5-4 装饰器
 资料下载：点击下载
