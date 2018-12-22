@@ -1,0 +1,22 @@
+有时候我们需要使用到列表或者元组中某一些变量时，可以利用序列分解法得到这些变量。
+系列分解法指的是通过赋值操作，将序列中的元素赋值给独立的变量。
+比如元组分解，
+```python
+tuple_num=(1,2,3)
+first, second, third = tuple_num
+```
+再比如列表分解，
+```python
+list_info=["lily",18,(2010,10,20)]
+name,age,birthday=list_info
+```
+还可以这样，
+```python
+list_info=["lily",18,(2010,10,20)]
+name,age,(year,month,day)=list_info
+```
+这里要注意的是，变量的个数和元素的个数要一致，否则会得到一个错误提示。
+```python
+t=(4,5)
+x,y,z=t
+```
